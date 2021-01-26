@@ -14,11 +14,10 @@ end
 ##
 # Load Rspec supporting files
 #
-Dir['./spec/support/**/*.rb'].each { |f| require f }
-
+Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 # Load App files
-Dir['./app/day1.rb'].each { |f| puts "Required #{f}"; require f }
+Dir['./app/day1.rb'].sort.each { |f| require f }
 
 # require File.expand_path("app/**/*.rb", __FILE__)
 
@@ -28,13 +27,13 @@ Dir['./app/day1.rb'].each { |f| puts "Required #{f}"; require f }
 if ENV['APPRAISAL_INITIALIZED'] || ENV['GITHUB_ACTIONS']
   app_name = Pathname.new(ENV['BUNDLE_GEMFILE']).basename.sub('.gemfile', '')
 else
-  /.*?(?<app_name>rails.*?)\.gemfile/ =~ Dir["gemfiles/rails*.gemfile"].sort.last
+  /.*?(?<app_name>rails.*?)\.gemfile/ =~ Dir['gemfiles/rails*.gemfile'].max
 end
 
 ##
 # Load dummy application and Rspec
 #
-app_framework = %w{rails sinatra}.find { |f| app_name.to_s.include?(f) }
+app_framework = %w[rails sinatra].find { |f| app_name.to_s.include?(f) }
 
 case app_framework
 when 'rails'
@@ -72,9 +71,9 @@ puts
 puts "Gemfile: #{ENV['BUNDLE_GEMFILE']}"
 puts 'Version:'
 
-Gem.loaded_specs.each { |name, spec|
-  puts "\t#{name}-#{spec.version}" if %w{rails activerecord-jdbcsqlite3-adapter sqlite3 rspec-rails sinatra}.include?(name)
-}
+Gem.loaded_specs.each do |name, spec|
+  puts "\t#{name}-#{spec.version}" if %w[rails activerecord-jdbcsqlite3-adapter sqlite3 rspec-rails
+                                         sinatra].include?(name)
+end
 
 puts
-

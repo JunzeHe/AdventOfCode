@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Day2 do
   describe '.parse' do
     it 'parses a line of input and returns object of Password type' do
-      line = "8-10 g: gggggggggg"
+      line = '8-10 g: gggggggggg'
       parsed = Day2.parse(line)
 
       expect(parsed).to be_a(Day2::Password)
@@ -14,15 +14,15 @@ describe Day2 do
     end
   end
 
-  describe Day2::Password  do
+  describe Day2::Password do
     describe '#is_valid_password?' do
-      it "returns true if the password contains enough of a letter" do
-        password = Day2::Password.new(first_num: 8, second_num: 10, letter: 'g', password: "ggggggggg")
+      it 'returns true if the password contains enough of a letter' do
+        password = Day2::Password.new(first_num: 8, second_num: 10, letter: 'g', password: 'ggggggggg')
         expect(password.valid?).to eq true
       end
 
-      it "returns false if the password does not contain enough of a letter" do
-        password = Day2::Password.new(first_num: 6, second_num: 13, letter: 'b', password: " rrrzvtrgrhqxqrvrvwzrbbb")
+      it 'returns false if the password does not contain enough of a letter' do
+        password = Day2::Password.new(first_num: 6, second_num: 13, letter: 'b', password: ' rrrzvtrgrhqxqrvrvwzrbbb')
         expect(password.valid?).to eq false
       end
     end

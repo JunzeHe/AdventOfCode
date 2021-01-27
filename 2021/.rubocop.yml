@@ -17,4 +17,6 @@ Style/RegexpLiteral:
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
 
-
+Metrics/BlockLength:
+  Exclude:
+    - ./spec/**/*

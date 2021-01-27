@@ -17,7 +17,7 @@ end
 Dir['./spec/support/**/*.rb'].sort.each { |f| require f }
 
 # Load App files
-Dir['./app/day1.rb'].sort.each { |f| require f }
+Dir['./app/*.rb'].sort.each { |f| require f }
 
 # require File.expand_path("app/**/*.rb", __FILE__)
 

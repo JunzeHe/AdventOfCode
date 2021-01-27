@@ -7,7 +7,7 @@ If your user is not part of the docker group, you will need to preface all of th
 docker build -t junze:recent .
 
 # run container to execute ruby scripts
-docker run -it --rm -v $(pwd):/home/submission junze:recent /bin/bash 
+docker run -it --rm -v $(pwd):/home/junze junze:recent /bin/bash
 
 # run image to run submission using file
 docker run -it --rm -v $(pwd):/home/submission junze:recent /bin/bash -c "cat sample_file | bin/scheduler"

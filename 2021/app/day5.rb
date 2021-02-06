@@ -4,15 +4,15 @@ module Day5
   NUM_ROWS = 128
   NUM_COLS = 8
   def seat_row(row_desc)
-    rows = (0..NUM_ROWS-1).to_a
+    rows = (0..NUM_ROWS - 1).to_a
 
-    row_desc.split("").each do |letter|
-      midpoint = (rows.length/2.0) - 1
+    row_desc.split('').each do |letter|
+      midpoint = (rows.length / 2.0) - 1
       case letter
       when 'F'
         rows = rows[0..midpoint]
       when 'B'
-        rows = rows[midpoint+1..]
+        rows = rows[midpoint + 1..]
       end
     end
 
@@ -20,15 +20,15 @@ module Day5
   end
 
   def seat_column(column_desc)
-    columns = (0..NUM_COLS-1).to_a
+    columns = (0..NUM_COLS - 1).to_a
 
-    column_desc.split("").each do |letter|
-      midpoint = (columns.length/2.0) - 1
+    column_desc.split('').each do |letter|
+      midpoint = (columns.length / 2.0) - 1
       case letter
       when 'L'
         columns = columns[0..midpoint]
       when 'R'
-        columns = columns[midpoint+1..]
+        columns = columns[midpoint + 1..]
       end
     end
 
@@ -60,14 +60,10 @@ module Day5
 
     my_seat_id = nil
     ids.each_with_index do |id, index|
-      next if index == 0 || index == ids.length - 1
+      next if index.zero? || index == ids.length - 1
 
-      prev_id = ids[index - 1]
       next_id = ids[index + 1]
-
-      if next_id != (id + 1)
-        my_seat_id = id + 1
-      end
+      my_seat_id = id + 1 if next_id != (id + 1)
     end
 
     puts "Part2 #{my_seat_id}"

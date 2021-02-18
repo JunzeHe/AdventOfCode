@@ -21,5 +21,14 @@ Metrics/BlockLength:
   Exclude:
     - ./spec/**/*
 
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity: 
+  Enabled: false
+
 Metrics/AbcSize:
   Enabled: false

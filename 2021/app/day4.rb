@@ -32,7 +32,6 @@ module Day4
     val.to_i >= min && val.to_i <= max
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def more_valid_passport?(passport)
     # I recognize that this boolean is incomprehensible. If this was a more
     # long standing program, I would have given the booleans variable names
@@ -46,7 +45,6 @@ module Day4
       %w[amb blu brn gry grn hzl oth].include?(passport['ecl']) &&
       passport['pid'].match?(/\A[0-9]{9}\z/)
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
 
   def part2
     passports = nil

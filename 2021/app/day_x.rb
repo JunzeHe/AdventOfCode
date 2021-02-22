@@ -4,11 +4,15 @@ module DayX
   def parse(raw_input); end
 
   def part1
-    puts 'Part1 '
+    File.open('./app/dayX_input') do |f|
+      puts f.read
+    end
   end
 
   def part2
-    puts 'Part2 }'
+    File.open('./app/dayX_input') do |f|
+      puts f.read
+    end
   end
 
   def main

@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Day17 do
   let(:input) do
     <<~INP
-          .#.
-          ..#
-          ###
+      .#.
+      ..#
+      ###
     INP
   end
 

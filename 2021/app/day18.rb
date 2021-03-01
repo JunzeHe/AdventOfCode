@@ -1,7 +1,7 @@
 module Day18
   module_function
 
-  def is_symbol?(char)
+  def symbol?(char)
     ['*', '+'].include?(char)
   end
 
@@ -20,7 +20,7 @@ module Day18
           open_parens += 1
         else
           open_parens -= 1
-          always_within_parens = false if index != parens.length - 1 && open_parens == 0
+          always_within_parens = false if index != parens.length - 1 && open_parens.zero?
         end
       end
 
@@ -47,13 +47,13 @@ module Day18
         next
       end
 
-      if open_parens > 0
+      if open_parens.positive?
         # Group everything within a parenthesese
         split_up[-1] += char
-      elsif is_symbol?(char)
+      elsif symbol?(char)
         split_up << char
       elsif char != ' '
-        if is_symbol?(split_up.last) || split_up.empty?
+        if symbol?(split_up.last) || split_up.empty?
           split_up << char
         else
           # Combine numbers together
@@ -84,9 +84,10 @@ module Day18
           next
         end
 
-        if operator == '+'
+        case operator
+        when '+'
           total += integer_char
-        elsif operator == '*'
+        when '*'
           total *= integer_char
         end
 
@@ -119,11 +120,9 @@ module Day18
 
   def add_parentheses(equation)
     unless equation.include?('*')
-      if equation.include?('+')
-        return "(#{equation})"
-      else
-        return equation
-      end
+      return "(#{equation})" if equation.include?('+')
+
+      return equation
     end
 
     split_up = equation.split('*').map(&:strip)
@@ -157,8 +156,6 @@ module Day18
   end
 
   def part1
-    sum = 0
-
     File.open('./app/day18_input') do |f|
       lines = f.read.split("\n")
       total = 0
@@ -172,8 +169,6 @@ module Day18
 
   # Doesn't fully work
   def part2
-    sum = 0
-
     File.open('./app/day18_input') do |f|
       lines = f.read.split("\n")
       total = 0

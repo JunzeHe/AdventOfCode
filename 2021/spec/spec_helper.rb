@@ -75,5 +75,3 @@ Gem.loaded_specs.each do |name, spec|
   puts "\t#{name}-#{spec.version}" if %w[rails activerecord-jdbcsqlite3-adapter sqlite3 rspec-rails
                                          sinatra].include?(name)
 end
-
-puts
